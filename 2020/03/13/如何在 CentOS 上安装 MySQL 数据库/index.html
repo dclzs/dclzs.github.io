@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="如何在 CentOS 上安装 MySQL 数据库"><meta name="keywords" content="Linux,MySQL"><meta name="author" content="东成两朝水"><meta name="copyright" content="东成两朝水"><title>如何在 CentOS 上安装 MySQL 数据库 | 东成两朝水的博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="东成两朝水的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-MySQL-数据库"><span class="toc-number">1.</span> <span class="toc-text">安装 MySQL 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置应用程序字符集和排序规则"><span class="toc-number">2.</span> <span class="toc-text">配置应用程序字符集和排序规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户访问权限配置"><span class="toc-number"></span> <span class="toc-text">用户访问权限配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://www.zaixiahuangfeihongqingcijiao.top/typora/20200423/P6lnC64DQRNX.png"></div><div class="author-info__name text-center">东成两朝水</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/zsdclzs" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">5</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://cindywjh.cn/" target="_blank" rel="noopener">灰灰</a><a class="author-info-links__name text-center" href="https://www.liu-chao.cn/" target="_blank" rel="noopener">刘超</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://www.zaixiahuangfeihongqingcijiao.top/typora/20200423/LJqEtkgAUxwt.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">东成两朝水的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">如何在 CentOS 上安装 MySQL 数据库</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/">安装</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">985</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><ul>
+<li>官方参考手册<ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html" target="_blank" rel="noopener">2.5.1使用 MySQL Yum 存储库在 Linux 上安装 MySQL</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html" target="_blank" rel="noopener">B.3.1 MySQL 数据库错误消息参考</a></li>
+</ul>
+</li>
+<li>安装介绍<ul>
+<li>文中的错误信息点击可跳转到相关网页以便解决问题</li>
+<li>系统版本：CentOS 7</li>
+<li>要安装的数据库版本：MySQL 5.7</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="安装-MySQL-数据库"><a href="#安装-MySQL-数据库" class="headerlink" title="安装 MySQL 数据库"></a>安装 MySQL 数据库</h3><ul>
+<li><p>配置 MySQL 软件源</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/yum.repos.d/mysql-community.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下内容（<code>CentOS6</code>）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/6/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加以下内容（<code>CentOS7</code>）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 <code>yum</code> 命令安装</p>
+<blockquote>
+<p>有可能出现 <a href="https://blog.csdn.net/lcyaiym/article/details/77282336" target="_blank" rel="noopener">GPG key retrieval failed: [Errno 14] curl#37 - “Couldn’t open file /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql”</a> 错误，提示找不到 <code>RPM-GPG-KEY-mysql</code> 文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 <code>mysql</code> 服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看是否安装成功</span></span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看是否已启动</span></span><br><span class="line">ps -ef|grep mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务（未启动的情况下执行）</span></span><br><span class="line">system start mysqld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接 <code>mysql</code> 数据库，数据库默认密码在 /var/log/mysqld.log 文件内的第六行末尾处</p>
+<blockquote>
+<p>连接上 <code>mysql</code> 后，进行任何操作都会出现 <a href="http://dev.mysql.com/doc/refman/5.6/en/alter-user.html" target="_blank" rel="noopener">ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.</a> 错误，因为密码是由数据库自动生成的初始密码，我们得修改默认初始密码。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>root</code> 密码</p>
+<blockquote>
+<p>如果密码设置为 123456 将会出现 <a href="http://dev.mysql.com/doc/refman/5.7/en/validate-password-plugin.html" target="_blank" rel="noopener">ERROR 1819 (HY000): Your password does NOT satisfy the CURRENT policy requirements</a> 错误，因为密码太过简单无法通过 <code>mysql</code> <a href="https://dev.mysql.com/doc/refman/5.7/en/validate-password-options-variables.html" target="_blank" rel="noopener">默认密码策略</a>的验证。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 默认密码策略如下：</span><br><span class="line">mysql&gt; SHOW VARIABLES LIKE &#39;validate_password%&#39;;</span><br><span class="line">+--------------------------------------+--------+</span><br><span class="line">| Variable_name                        | Value  |</span><br><span class="line">+--------------------------------------+--------+</span><br><span class="line">| validate_password_check_user_name    | OFF    |</span><br><span class="line">| validate_password_dictionary_file    |        |</span><br><span class="line">| validate_password_length             | 8      |</span><br><span class="line">| validate_password_mixed_case_count   | 1      |</span><br><span class="line">| validate_password_number_count       | 1      |</span><br><span class="line">| validate_password_policy             | MEDIUM |</span><br><span class="line">| validate_password_special_char_count | 1      |</span><br><span class="line">+--------------------------------------+--------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 修改密码策略等级（重启后失效）</span><br><span class="line">mysql&gt; SET GLOBAL validate_password_policy&#x3D;LOW;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 修改密码长度策略（重启后失效）</span><br><span class="line">mysql&gt; SET GLOBAL validate_password_length&#x3D;6;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 修改密码为 123456</span><br><span class="line">mysql&gt; SET PASSWORD &#x3D; PASSWORD(&#39;123456&#39;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="配置应用程序字符集和排序规则"><a href="#配置应用程序字符集和排序规则" class="headerlink" title="配置应用程序字符集和排序规则"></a><a href="https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html" target="_blank" rel="noopener">配置应用程序字符集和排序规则</a></h3><ul>
+<li><p>首先我们找到<a href="https://dev.mysql.com/doc/refman/5.7/en/option-files.html" target="_blank" rel="noopener">配置文件</a>位置，以下是 <code>MySQL</code> 的全局选项配置文件全路径</p>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/etc/my.cnf</td>
+<td>全局选项</td>
+</tr>
+<tr>
+<td>/etc/mysql/my.cnf</td>
+<td>Global options</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>然后我们开始<a href="https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html" target="_blank" rel="noopener">配置字符集和排序规则</a></p>
+<blockquote>
+<p>可使用 <code>show charset;</code> 命令查看所支持的字符集和排序规则</p>
+<p>还有一点就是 <code>utf8</code> 单个字符只占用 <code>3</code> 个，而 <code>utf8mb4</code> 单个字节占用 <code>4</code> 个字节，详细信息点击 <a href="https://dev.mysql.com/doc/refman/5.6/en/charset-unicode.html" target="_blank" rel="noopener">10.9 Unicode 支持</a>查看</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 编辑配置文件</span></span><br><span class="line">vim /etc/my.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在 [mysqld] 分组下加上以下内容</span></span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">collation-server=utf8mb4_general_ci</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重新启动服务使配置生效</span></span><br><span class="line">systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="用户访问权限配置"><a href="#用户访问权限配置" class="headerlink" title="用户访问权限配置"></a>用户访问权限配置</h2><ul>
+<li><p><a href="https://dev.mysql.com/doc/refman/5.7/en/creating-accounts.html" target="_blank" rel="noopener">创建账号和权限分配</a></p>
+<blockquote>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/create-user.html" target="_blank" rel="noopener">CREATE USER 语句</a>，<a href="https://dev.mysql.com/doc/refman/5.7/en/grant.html" target="_blank" rel="noopener">GRANT 语句</a>，<a href="https://dev.mysql.com/doc/refman/5.7/en/revoke.html" target="_blank" rel="noopener">REVOKE 语句</a>，<a href="https://dev.mysql.com/doc/refman/5.7/en/drop-user.html" target="_blank" rel="noopener">DROP USER 语句</a></p>
+<p>要使用<a href="https://dev.mysql.com/doc/refman/5.7/en/create-user.html" target="_blank" rel="noopener"><code>CREATE USER</code></a>，必须具有全局<a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_create-user" target="_blank" rel="noopener"><code>CREATE USER</code></a> 权限</p>
+<p>要使用 <a href="https://dev.mysql.com/doc/refman/5.7/en/grant.html" target="_blank" rel="noopener"><code>GRANT</code></a>，必须具有 <a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_grant-option" target="_blank" rel="noopener"><code>GRANT OPTION</code></a> 权限</p>
+<p>要使用<a href="https://dev.mysql.com/doc/refman/5.7/en/revoke.html" target="_blank" rel="noopener"><code>REVOKE</code></a>语法，必须具有<a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_grant-option" target="_blank" rel="noopener"><code>GRANT OPTION</code></a> 权限</p>
+<p>要使用<a href="https://dev.mysql.com/doc/refman/5.7/en/drop-user.html" target="_blank" rel="noopener"><code>DROP USER</code></a>，必须具有全局<a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_create-user" target="_blank" rel="noopener"><code>CREATE USER</code></a> 权限</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 创建一个用户名为 xiaoming，密码为 123456，具有访问 bankaccount 数据库的所有权限，以及 GRANT OPTION 权限，但该账户只能从 localhost 连接到服务器。</span><br><span class="line">CREATE USER &#39;xiaoming&#39;@&#39;localhost&#39;</span><br><span class="line">	IDENTIFIED BY &#39;123456&#39;;</span><br><span class="line">GRANT ALL</span><br><span class="line">  ON bankaccount.*</span><br><span class="line">  TO &#39;xiaoming&#39;@&#39;localhost&#39;</span><br><span class="line">  WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line"># 撤销账户权限</span><br><span class="line">REVOKE ALL</span><br><span class="line">	ON bankaccount.*</span><br><span class="line">	FROM &#39;xiaoming&#39;@&#39;localhost&#39;;</span><br><span class="line"></span><br><span class="line"># 查看 xiaoming 用户的权限</span><br><span class="line">SHOW GRANTS FOR &#39;xiaoming&#39;@&#39;localhost&#39;\G;</span><br><span class="line"></span><br><span class="line"># 删除 xiaoming 用户</span><br><span class="line">DROP USER &#39;xiaoming&#39;@&#39;localhost&#39;;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动 mysql 服务</span></span><br><span class="line">sudo systemctl start mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭 mysql 服务</span></span><br><span class="line">sudo systemctl stop mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启 mysql 服务</span></span><br><span class="line">sudo systemctl restart mysqld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看字符集</span></span><br><span class="line">show variables like '%character%';</span><br><span class="line">show variables like '%collation%';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 xiaoming 用户的权限</span></span><br><span class="line">show grants for 'xiaoming'@'localhost'\G;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看用户信息</span></span><br><span class="line">show create user 'xiaoming'@'localhost'\G;</span><br></pre></td></tr></table></figure>
+
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">东成两朝水</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zaixiahuangfeihongqingcijiao.top/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/">https://www.zaixiahuangfeihongqingcijiao.top/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zaixiahuangfeihongqingcijiao.top">东成两朝水的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="social-share pull-right" data-disabled="google,facebook,diandian,twitter,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/03/19/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/"><i class="fa fa-chevron-left">  </i><span>如何在 CentOS 上安装 Samba 服务</span></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://www.zaixiahuangfeihongqingcijiao.top/typora/20200423/LJqEtkgAUxwt.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2020 By 东成两朝水</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

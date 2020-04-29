@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>东成两朝水的博客</title>
+  <icon>https://www.zaixiahuangfeihongqingcijiao.top/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.zaixiahuangfeihongqingcijiao.top/"/>
+  <updated>2020-04-29T05:47:34.667Z</updated>
+  <id>https://www.zaixiahuangfeihongqingcijiao.top/</id>
+  
+  <author>
+    <name>东成两朝水</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://www.zaixiahuangfeihongqingcijiao.top/2020/04/22/hello-world/"/>
+    <id>https://www.zaixiahuangfeihongqingcijiao.top/2020/04/22/hello-world/</id>
+    <published>2020-04-22T07:53:00.000Z</published>
+    <updated>2020-04-29T05:47:34.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Hello World" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/Hello-World/"/>
+    
+    
+      <category term="Hello World" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Hello-World/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx 前后端分离</title>
+    <link href="https://www.zaixiahuangfeihongqingcijiao.top/2020/04/13/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
+    <id>https://www.zaixiahuangfeihongqingcijiao.top/2020/04/13/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</id>
+    <published>2020-04-13T07:26:07.000Z</published>
+    <updated>2020-04-29T05:47:34.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;此处略过打包上传服务器的步骤，并且假设包上传在服务器的 /server 目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打包好的前端文件路径 &lt;code&gt;/server/page/dist.zip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打包好的后端文件路径 &lt;code&gt;/server/war/app.jar&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;前端访问路径 &lt;code&gt;http://127.0.0.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;后端访问路径 &lt;code&gt;http://127.0.0.1:8080&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;日志存放路径 &lt;code&gt;/server/logs/app.log&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="配置" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="Nginx" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Nginx/"/>
+    
+      <category term="CentOS" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/CentOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell 语法与代码示例</title>
+    <link href="https://www.zaixiahuangfeihongqingcijiao.top/2020/04/01/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://www.zaixiahuangfeihongqingcijiao.top/2020/04/01/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
+    <published>2020-04-01T02:16:43.000Z</published>
+    <updated>2020-04-29T05:47:34.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;记录 Shell 语法与代码示例，持续更新….&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="代码示例" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    
+    
+      <category term="Shell" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Shell/"/>
+    
+      <category term="Linux" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在 CentOS 上安装 Samba 服务</title>
+    <link href="https://www.zaixiahuangfeihongqingcijiao.top/2020/03/19/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://www.zaixiahuangfeihongqingcijiao.top/2020/03/19/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/</id>
+    <published>2020-03-19T08:00:31.000Z</published>
+    <updated>2020-04-29T05:47:34.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;参考资料&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.samba.org/index.php/User_Documentation&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方参考手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方配置说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://linux.vbird.org/linux_server/0370samba.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;鸟哥的 &lt;strong&gt;Linux&lt;/strong&gt; 私房菜 - SAMBA 服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/pipci/p/10154393.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Debian9.5 系统 Samba 配置说明&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/15893eece2ee&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SAMBA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.samba.org/index.php/Setting_up_Samba_as_a_Standalone_Server&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;将 Samba 设置为独立服务器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/pipci/p/10144840.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;NetBios, NetBios over TCP/IP, SMB 之间的关系&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/wangaohui/p/5116519.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;关于 Windows 的 139 和 445 端口&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="安装" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
+    
+    
+      <category term="CentOS" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/CentOS/"/>
+    
+      <category term="Samba" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Samba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在 CentOS 上安装 MySQL 数据库</title>
+    <link href="https://www.zaixiahuangfeihongqingcijiao.top/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>https://www.zaixiahuangfeihongqingcijiao.top/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2020-03-13T02:45:07.000Z</published>
+    <updated>2020-04-29T05:47:34.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;官方参考手册&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;2.5.1使用 MySQL Yum 存储库在 Linux 上安装 MySQL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/server-error-reference.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;B.3.1 MySQL 数据库错误消息参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装介绍&lt;ul&gt;
+&lt;li&gt;文中的错误信息点击可跳转到相关网页以便解决问题&lt;/li&gt;
+&lt;li&gt;系统版本：CentOS 7&lt;/li&gt;
+&lt;li&gt;要安装的数据库版本：MySQL 5.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="安装" scheme="https://www.zaixiahuangfeihongqingcijiao.top/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
+    
+    
+      <category term="Linux" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/Linux/"/>
+    
+      <category term="MySQL" scheme="https://www.zaixiahuangfeihongqingcijiao.top/tags/MySQL/"/>
+    
+  </entry>
+  
+</feed>
