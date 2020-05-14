@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>东成两朝水的博客</title>
-  <icon>http://dclzs.com/icon.png</icon>
+  <icon>https://www.dclzs.com/icon.png</icon>
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://dclzs.com/"/>
+  <link href="https://www.dclzs.com/"/>
   <updated>2020-05-10T01:36:49.663Z</updated>
-  <id>http://dclzs.com/</id>
+  <id>https://www.dclzs.com/</id>
   
   <author>
     <name>东成两朝水</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://dclzs.com/2020/04/22/hello-world/"/>
-    <id>http://dclzs.com/2020/04/22/hello-world/</id>
+    <link href="https://www.dclzs.com/hello-world/"/>
+    <id>https://www.dclzs.com/hello-world/</id>
     <published>2020-04-22T07:53:00.000Z</published>
     <updated>2020-05-10T01:36:49.663Z</updated>
     
@@ -30,17 +30,17 @@
     </summary>
     
     
-      <category term="Hello World" scheme="http://dclzs.com/categories/Hello-World/"/>
+      <category term="Hello World" scheme="https://www.dclzs.com/categories/Hello-World/"/>
     
     
-      <category term="Hello World" scheme="http://dclzs.com/tags/Hello-World/"/>
+      <category term="Hello World" scheme="https://www.dclzs.com/tags/Hello-World/"/>
     
   </entry>
   
   <entry>
     <title>Nginx 前后端分离</title>
-    <link href="http://dclzs.com/2020/04/13/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
-    <id>http://dclzs.com/2020/04/13/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</id>
+    <link href="https://www.dclzs.com/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
+    <id>https://www.dclzs.com/Nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</id>
     <published>2020-04-13T07:26:07.000Z</published>
     <updated>2020-05-13T03:12:26.222Z</updated>
     
@@ -61,21 +61,21 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="配置" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E9%85%8D%E7%BD%AE/"/>
+      <category term="配置" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E9%85%8D%E7%BD%AE/"/>
     
     
-      <category term="Nginx" scheme="http://dclzs.com/tags/Nginx/"/>
+      <category term="Nginx" scheme="https://www.dclzs.com/tags/Nginx/"/>
     
-      <category term="CentOS" scheme="http://dclzs.com/tags/CentOS/"/>
+      <category term="CentOS" scheme="https://www.dclzs.com/tags/CentOS/"/>
     
   </entry>
   
   <entry>
     <title>Shell 语法与代码示例</title>
-    <link href="http://dclzs.com/2020/04/01/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
-    <id>http://dclzs.com/2020/04/01/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
+    <link href="https://www.dclzs.com/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://www.dclzs.com/Shell%20%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
     <published>2020-04-01T02:16:43.000Z</published>
     <updated>2020-05-13T03:08:20.116Z</updated>
     
@@ -88,21 +88,21 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="代码示例" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+      <category term="代码示例" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
     
     
-      <category term="Shell" scheme="http://dclzs.com/tags/Shell/"/>
+      <category term="Shell" scheme="https://www.dclzs.com/tags/Shell/"/>
     
-      <category term="Linux" scheme="http://dclzs.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://www.dclzs.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>如何在 CentOS 上安装 Samba 服务</title>
-    <link href="http://dclzs.com/2020/03/19/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://dclzs.com/2020/03/19/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/</id>
+    <link href="https://www.dclzs.com/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://www.dclzs.com/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20Samba%20%E6%9C%8D%E5%8A%A1/</id>
     <published>2020-03-19T08:00:31.000Z</published>
     <updated>2020-05-10T01:38:25.351Z</updated>
     
@@ -125,21 +125,21 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="安装" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
+      <category term="安装" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
     
     
-      <category term="CentOS" scheme="http://dclzs.com/tags/CentOS/"/>
+      <category term="CentOS" scheme="https://www.dclzs.com/tags/CentOS/"/>
     
-      <category term="Samba" scheme="http://dclzs.com/tags/Samba/"/>
+      <category term="Samba" scheme="https://www.dclzs.com/tags/Samba/"/>
     
   </entry>
   
   <entry>
     <title>如何在 CentOS 上安装 MySQL 数据库</title>
-    <link href="http://dclzs.com/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>http://dclzs.com/2020/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <link href="https://www.dclzs.com/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>https://www.dclzs.com/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
     <published>2020-03-13T02:45:07.000Z</published>
     <updated>2020-05-13T02:51:03.649Z</updated>
     
@@ -162,14 +162,14 @@
     </summary>
     
     
-      <category term="笔记" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="安装" scheme="http://dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
+      <category term="安装" scheme="https://www.dclzs.com/categories/%E7%AC%94%E8%AE%B0/%E5%AE%89%E8%A3%85/"/>
     
     
-      <category term="Linux" scheme="http://dclzs.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://www.dclzs.com/tags/Linux/"/>
     
-      <category term="MySQL" scheme="http://dclzs.com/tags/MySQL/"/>
+      <category term="MySQL" scheme="https://www.dclzs.com/tags/MySQL/"/>
     
   </entry>
   
