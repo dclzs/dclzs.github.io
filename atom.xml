@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.dclzs.com/"/>
-  <updated>2020-05-10T01:36:49.663Z</updated>
+  <updated>2020-05-15T03:01:11.886Z</updated>
   <id>https://www.dclzs.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>踩坑：第 1 期</title>
+    <link href="https://www.dclzs.com/%E8%B8%A9%E5%9D%91%EF%BC%9A%E7%AC%AC%201%20%E6%9C%9F/"/>
+    <id>https://www.dclzs.com/%E8%B8%A9%E5%9D%91%EF%BC%9A%E7%AC%AC%201%20%E6%9C%9F/</id>
+    <published>2020-05-15T03:01:11.886Z</published>
+    <updated>2020-05-15T03:01:11.886Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文记录开发过程中遇到的问题&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="踩坑" scheme="https://www.dclzs.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+      <category term="mysql" scheme="https://www.dclzs.com/tags/mysql/"/>
+    
+      <category term="java" scheme="https://www.dclzs.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

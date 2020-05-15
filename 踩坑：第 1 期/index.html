@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="踩坑：第 1 期"><meta name="keywords" content="mysql,java"><meta name="author" content="东成两朝水"><meta name="copyright" content="东成两朝水"><title>踩坑：第 1 期 | 东成两朝水的博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer></script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?98473b3c84aaef0dbee4c8f0028a81d2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"664DZ8XZ5Z","apiKey":"62ba6b015dd9bab60faa0177076e0531","indexName":"blog","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="东成两朝水的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-1055-Expression-this-is-incompatible-with-sql-mode-only-full-group-by"><span class="toc-number">1.</span> <span class="toc-text">MySQL 1055 - Expression; this is incompatible with sql_mode&#x3D;only_full_group_by</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sql-model-相关解释"><span class="toc-number">1.1.</span> <span class="toc-text">sql_model 相关解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考链接"><span class="toc-number">1.2.</span> <span class="toc-text">参考链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字与字段名称冲突（查询不区分大小写）"><span class="toc-number">2.</span> <span class="toc-text">关键字与字段名称冲突（查询不区分大小写）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件查询-VARCHAR-类型字段少写单引号"><span class="toc-number">3.</span> <span class="toc-text">条件查询 VARCHAR 类型字段少写单引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据-VARCHAR-类型的字段排序"><span class="toc-number">4.</span> <span class="toc-text">根据 VARCHAR 类型的字段排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatis-plus-两个相同的方法名（参数不一样）"><span class="toc-number">5.</span> <span class="toc-text">mybatis plus 两个相同的方法名（参数不一样）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Response-响应头设置文件下载"><span class="toc-number">6.</span> <span class="toc-text">Response 响应头设置文件下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信公众号用户昵称保存到数据库时报错"><span class="toc-number">7.</span> <span class="toc-text">微信公众号用户昵称保存到数据库时报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信小程序码生成出现-47001-data-format-error-错误"><span class="toc-number">8.</span> <span class="toc-text">微信小程序码生成出现 47001 data format error 错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">8.1.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码示例"><span class="toc-number">8.2.</span> <span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考链接-1"><span class="toc-number">8.3.</span> <span class="toc-text">参考链接</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://images.dclzs.com/P6lnC64DQRNX.png"></div><div class="author-info__name text-center">东成两朝水</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/dclzs" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">6</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">9</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">6</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="http://cindywjh.cn/" target="_blank" rel="noopener">灰灰</a><a class="author-info-links__name text-center" href="https://www.liu-chao.cn/" target="_blank" rel="noopener">刘超</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://images.dclzs.com/KrvEySpujULk.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">东成两朝水的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">踩坑：第 1 期</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%B8%A9%E5%9D%91/">踩坑</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.5k</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>本文记录开发过程中遇到的问题</p>
+<a id="more"></a>
+
+
+
+<hr>
+<h3 id="MySQL-1055-Expression-this-is-incompatible-with-sql-mode-only-full-group-by"><a href="#MySQL-1055-Expression-this-is-incompatible-with-sql-mode-only-full-group-by" class="headerlink" title="MySQL 1055 - Expression; this is incompatible with sql_mode=only_full_group_by"></a><code>MySQL 1055 - Expression; this is incompatible with sql_mode=only_full_group_by</code></h3><blockquote>
+<p>之前偷懒，用命令配置了一下，重启之后就失效了。</p>
+</blockquote>
+<p>错误原因：在 <code>MySQL5.7</code> 之后，<code>sql_mode</code> 中默认存在 <code>ONLY_FULL_GROUP_BY</code>，<code>SQL</code> 语句未通过 <code>ONLY_FULL_GROUP_BY</code> 语义检查所以报错。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先登录 MySQL 查看 sql_mode</span></span><br><span class="line">mysql&gt; SELECT @@SQL_MODE;</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| @@SQL_MODE                                                                                                                                |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">| ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |</span><br><span class="line">+-------------------------------------------------------------------------------------------------------------------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 MySQL 配置文件(/etc/my.ini)</span></span><br><span class="line">$ vim /etc/my.ini</span><br><span class="line"><span class="comment"># 在[mysqld]下添加以下内容</span></span><br><span class="line"><span class="attr">sql_mode</span>=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">$ systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+
+<h4 id="sql-model-相关解释"><a href="#sql-model-相关解释" class="headerlink" title="sql_model 相关解释"></a><code>sql_model</code> 相关解释</h4><ul>
+<li><p><code>ONLY_FULL_GROUP_BY</code></p>
+<p>出现在 <code>select</code> 语句、<code>HAVING</code> 条件和 <code>ORDER BY</code> 语句中的列，必须是 <code>GROUP BY</code> 的列或者依赖于<code>GROUP BY</code> 列的函数列。</p>
+</li>
+<li><p><code>NO_AUTO_VALUE_ON_ZERO</code></p>
+<p>该值影响自增长列的插入。默认设置下，插入 <code>0</code> 或 <code>NULL</code> 代表生成下一个自增长值。如果用户希望插入的值为 <code>0</code>，而该列又是自增长的，那么这个选项就有用了。</p>
+</li>
+<li><p><code>STRICT_TRANS_TABLES</code></p>
+<p>在该模式下，如果一个值不能插入到一个事务表中，则中断当前的操作，对非事务表不做限制</p>
+</li>
+<li><p><code>NO_ZERO_IN_DATE</code></p>
+<p>这个模式影响了是否允许日期中的月份和日包含 <code>0</code>。如果开启此模式，<code>2016-01-00</code> 是不允许的，但是 <code>0000-02-01</code> 是允许的。它实际的行为受到 <code>strict mode</code> 是否开启的影响 <code>1</code>。</p>
+</li>
+<li><p><code>NO_ZERO_DATE</code></p>
+<p>设置该值，<code>mysql</code> 数据库不允许插入零日期。它实际的行为受到 <code>strict mode</code> 是否开启的影响2。</p>
+</li>
+<li><p><code>ERROR_FOR_DIVISION_BY_ZERO</code></p>
+<p>在 <code>INSERT</code> 或 <code>UPDATE</code> 过程中，如果数据被零除，则产生错误而非警告。如果未给出该模式，那么数据被零除时 <code>MySQL</code> 返回 <code>NULL</code></p>
+</li>
+<li><p><code>NO_AUTO_CREATE_USER</code></p>
+<p>禁止 <code>GRANT</code> 创建密码为空的用户</p>
+</li>
+<li><p><code>NO_ENGINE_SUBSTITUTION</code></p>
+<p>如果需要的存储引擎被禁用或未编译，那么抛出错误。不设置此值时，用默认的存储引擎替代，并抛出一个异常</p>
+</li>
+<li><p><code>PIPES_AS_CONCAT</code></p>
+<p>将 ”||” 视为字符串的连接操作符而非或运算符，这和 <code>Oracle</code> 数据库是一样的，也和字符串的拼接函数 <code>Concat</code> 相类似</p>
+</li>
+<li><p><code>ANSI_QUOTES</code></p>
+<p>启用 <code>ANSI_QUOTES</code> 后，不能用双引号来引用字符串，因为它被解释为识别符</p>
+</li>
+</ul>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><ol>
+<li><p><a href="https://blog.csdn.net/qq_37253891/article/details/99731476" target="_blank" rel="noopener">SQL 报错1055</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/haoyul/p/9882853.html" target="_blank" rel="noopener">MySQL 错误1055</a></p>
+</li>
+</ol>
+<hr>
+<h3 id="关键字与字段名称冲突（查询不区分大小写）"><a href="#关键字与字段名称冲突（查询不区分大小写）" class="headerlink" title="关键字与字段名称冲突（查询不区分大小写）"></a>关键字与字段名称冲突（查询不区分大小写）</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加测试数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb_test(</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line">    <span class="string">`key`</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    primary <span class="keyword">key</span> (<span class="string">`id`</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_test(<span class="string">`id`</span>,<span class="string">`key`</span>) <span class="keyword">values</span>(<span class="number">1</span>, <span class="string">'key123'</span>),(<span class="number">2</span>, <span class="string">'key456'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># key 实际上是数据库的关键字，以下是错误示范</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">key</span> <span class="keyword">from</span> <span class="keyword">key</span> = <span class="string">'KEY123'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正确示范（最好还是别用关键字当作字段名）</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">`key`</span> <span class="keyword">from</span> <span class="string">`key`</span> = <span class="string">'KEY123'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="条件查询-VARCHAR-类型字段少写单引号"><a href="#条件查询-VARCHAR-类型字段少写单引号" class="headerlink" title="条件查询 VARCHAR 类型字段少写单引号"></a>条件查询 <code>VARCHAR</code> 类型字段少写单引号</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加测试数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb_test1(</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line">    <span class="string">`a`</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    primary <span class="keyword">key</span> (<span class="string">`id`</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_test1(<span class="string">`id`</span>,<span class="string">`a`</span>) <span class="keyword">values</span>(<span class="number">1</span>, <span class="string">'9'</span>),(<span class="number">2</span>, <span class="string">'10'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 正确示例</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_test1 a!=<span class="string">'0'</span>;</span><br><span class="line"><span class="comment"># 错误示例（不推荐这样写，踩到这个坑的时候特意去创个表试了下，结果没问题...但在原场景却有问题）</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_test1 a!=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="根据-VARCHAR-类型的字段排序"><a href="#根据-VARCHAR-类型的字段排序" class="headerlink" title="根据 VARCHAR 类型的字段排序"></a>根据 <code>VARCHAR</code> 类型的字段排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加测试数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb_test2(</span><br><span class="line">    <span class="string">`id`</span> <span class="built_in">int</span> auto_increment,</span><br><span class="line">    <span class="string">`a`</span> <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">    primary <span class="keyword">key</span> (<span class="string">`id`</span>)</span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_test2(<span class="string">`id`</span>,<span class="string">`a`</span>) <span class="keyword">values</span>(<span class="number">1</span>, <span class="string">'9'</span>),(<span class="number">2</span>, <span class="string">'10'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行下面这条 sql，返回结果是 9，所以，请注意了</span></span><br><span class="line"><span class="keyword">select</span> a <span class="keyword">from</span> tb_test2 <span class="keyword">order</span> <span class="keyword">by</span> a <span class="keyword">desc</span> <span class="keyword">limit</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="mybatis-plus-两个相同的方法名（参数不一样）"><a href="#mybatis-plus-两个相同的方法名（参数不一样）" class="headerlink" title="mybatis plus 两个相同的方法名（参数不一样）"></a><code>mybatis plus</code> 两个相同的方法名（参数不一样）</h3><p>方法如下 <code>TestMapper.java</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Select</span>(<span class="string">"select * from tb_test where `key` = #&#123;key&#125;"</span>)</span><br><span class="line"><span class="meta">@ResultMap</span>(<span class="string">"BaseResultMap"</span>)</span><br><span class="line"><span class="function">List&lt;Dict&gt; <span class="title">selectByKey</span><span class="params">(@Param(<span class="string">"key"</span>)</span> String key)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Select</span>(<span class="string">"select * from tb_test where `key` = #&#123;key&#125; and `name` = #&#123;name&#125;"</span>)</span><br><span class="line"><span class="meta">@ResultMap</span>(<span class="string">"BaseResultMap"</span>)</span><br><span class="line"><span class="function">List&lt;Dict&gt; <span class="title">selectByKey</span><span class="params">(@Param(<span class="string">"key"</span>)</span> String key, @<span class="title">Param</span><span class="params">(<span class="string">"name"</span>)</span> String name)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>项目启动时打印的错误信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ERROR c.b.mybatisplus.MybatisConfiguration - mapper[com.example.TestMapper.selectByKey] is ignored, because it&#39;s exists, maybe from xml file</span><br></pre></td></tr></table></figure>
+
+<p>调用时的错误信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nested exception is org.apache.ibatis.binding.BindingException: Parameter &#39;name&#39; not found. Available parameters are [key, param1]</span><br></pre></td></tr></table></figure>
+
+<p>解决方法及思路（奇怪的是，在本地跑正常运行，在服务器上就报错）</p>
+<ul>
+<li><code>TestMapper.xml</code> 文件中的 <code>id</code> 都是唯一的，也就是说方法名也得唯一的</li>
+</ul>
+<hr>
+<h3 id="Response-响应头设置文件下载"><a href="#Response-响应头设置文件下载" class="headerlink" title="Response 响应头设置文件下载"></a><code>Response</code> 响应头设置文件下载</h3><blockquote>
+<p>看来设置请求头也要注意顺序</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"># 正确示例</span><br><span class="line">String url = <span class="string">"https://images.dclzs.com/P6lnC64DQRNX.png"</span>;</span><br><span class="line"><span class="keyword">byte</span>[] bytes = IOUtils.toByteArray(<span class="keyword">new</span> URL(url));</span><br><span class="line">response.setContentType(<span class="string">"multipart/form-data"</span>);</span><br><span class="line">response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;fileName="</span> + System.currentTimeMillis() + <span class="string">".png"</span>);</span><br><span class="line">response.getOutputStream().write(bytes, <span class="number">0</span>, bytes.length);</span><br><span class="line">response.getOutputStream().flush();</span><br><span class="line"></span><br><span class="line"># 错误示例</span><br><span class="line">String url = <span class="string">"https://images.dclzs.com/P6lnC64DQRNX.png"</span>;</span><br><span class="line"><span class="keyword">byte</span>[] bytes = IOUtils.toByteArray(<span class="keyword">new</span> URL(url));</span><br><span class="line">response.getOutputStream().write(bytes, <span class="number">0</span>, bytes.length);</span><br><span class="line">response.setContentType(<span class="string">"multipart/form-data"</span>);</span><br><span class="line">response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;fileName="</span> + System.currentTimeMillis() + <span class="string">".png"</span>);</span><br><span class="line">response.getOutputStream().flush();</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="微信公众号用户昵称保存到数据库时报错"><a href="#微信公众号用户昵称保存到数据库时报错" class="headerlink" title="微信公众号用户昵称保存到数据库时报错"></a>微信公众号用户昵称保存到数据库时报错</h3><p>这个是由于数据长度而导致的问题，<code>MySQL</code> 中的 <code>utf8</code> 实际上是 <code>utf8mb3</code> ，配置成 <code>utf8mb4</code> 就可以了</p>
+<p>具体配置方法参考 <a href="https://dclzs.com/%E5%A6%82%E4%BD%95%E5%9C%A8%20CentOS%20%E4%B8%8A%E5%AE%89%E8%A3%85%20MySQL%20%E6%95%B0%E6%8D%AE%E5%BA%93/#%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99" target="_blank" rel="noopener">配置应用程序字符集和排序规则</a></p>
+<hr>
+<h3 id="微信小程序码生成出现-47001-data-format-error-错误"><a href="#微信小程序码生成出现-47001-data-format-error-错误" class="headerlink" title="微信小程序码生成出现 47001 data format error 错误"></a>微信小程序码生成出现 <code>47001 data format error</code> 错误</h3><p>文档链接 <a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html" target="_blank" rel="noopener"><code>https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html</code></a></p>
+<p>请求地址 <code>POST https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=ACCESS_TOKEN</code></p>
+<p>请求参数（这里只写了部分参数，详情参数去看文档）</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>access_token</td>
+<td>string</td>
+<td><a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-token/auth.getAccessToken.html" target="_blank" rel="noopener">接口调用凭证</a></td>
+</tr>
+<tr>
+<td>scene</td>
+<td>string</td>
+<td>最大32个可见字符，只支持数字，大小写英文以及部分特殊字符：<code>!#$&amp;&#39;()*+,/:;=?@-._~</code>，其它字符请自行编码为合法字符（因不支持<code>%</code>，中文无法使用 <code>urlencode</code> 处理，请使用其他编码方式）</td>
+</tr>
+</tbody></table>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li><code>POST</code> 参数需要转成 <code>JSON</code> 字符串，不支持 <code>form</code> 表单提交。</li>
+<li>接口只能生成已发布的小程序的二维码</li>
+<li>调用分钟频率受限（5000次/分钟），如需大量小程序码，建议预生成</li>
+</ul>
+<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String url = <span class="string">"https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=ACCESS_TOKEN"</span>.replace(<span class="string">"ACCESS_TOKEN"</span>, getAccessToken());</span><br><span class="line">Map&lt;String, String&gt; data = <span class="keyword">new</span> <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">data.put(<span class="string">"scene"</span>, scene);</span><br><span class="line"><span class="comment">// 这里对应注意事项第一条，需要转成 JSON 字符串（这里用的是 fastjson 库）</span></span><br><span class="line">String requestJson = JSONObject.toJSONString(data);</span><br><span class="line"><span class="comment">// 用别的类型接收直接报错（String 我试过不会报错，但是..直接乱码）</span></span><br><span class="line"><span class="comment">// 错误信息是没有找到对应的消息转换器（HttpMessageConverter）</span></span><br><span class="line"><span class="keyword">byte</span>[] response = restTemplate.postForObject(url, requestJson, <span class="keyword">byte</span>[]<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h4><ol>
+<li><a href="https://developers.weixin.qq.com/community/develop/doc/000e6cf20c0b90779bb995d075140" target="_blank" rel="noopener">小程序订阅信息的发送报错47001</a></li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">东成两朝水</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.dclzs.com/%E8%B8%A9%E5%9D%91%EF%BC%9A%E7%AC%AC%201%20%E6%9C%9F/">https://www.dclzs.com/%E8%B8%A9%E5%9D%91%EF%BC%9A%E7%AC%AC%201%20%E6%9C%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.dclzs.com">东成两朝水的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a><a class="post-meta__tags" href="/tags/java/">java</a></div><div class="social-share pull-right" data-disabled="google,facebook,diandian,twitter,qzone"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="next-post pull-right"><a href="/hello-world/"><span>Hello World</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(https://images.dclzs.com/KrvEySpujULk.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By 东成两朝水</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text"><a href="http://www.beian.miit.gov.cn" target="_blank">湘ICP备20009466号-1</a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/algolia.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
